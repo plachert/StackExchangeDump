@@ -46,7 +46,33 @@ def parse_posts(sparkContext, path):
     MAIN_TAG = 'posts'
     return parse(sparkContext, path, SCHEMA, MAIN_TAG)
 
+def parse_posthistory(sparkContext, path):
 
+    SCHEMA = StructType([ \
+        StructField("Id", FloatType(), True), \
+        StructField("PostHistoryTypeId", FloatType(), True), \
+        StructField("PostId", FloatType(), True), \
+        StructField("RevisionGUID", StringType(), True), \
+        StructField("CreationDate", StringType(), True), \
+        StructField("UserId", FloatType(), True), \
+        StructField("UserDisplayName", StringType(), True), \
+        StructField("Body", StringType(), True), \
+        StructField("Comment", StringType(), True), \
+        StructField("Text", StringType(), True),
+        StructField("CloseReasonId", FloatType(), True)])
+    MAIN_TAG = 'posthistory'
+    return parse(sparkContext, path, SCHEMA, MAIN_TAG)
+
+def parse_postlinks(sparkContext, path):
+
+    SCHEMA = StructType([ \
+        StructField("Id", FloatType(), True), \
+        StructField("CreationDate", StringType(), True), \
+        StructField("PostId", FloatType(), True), \
+        StructField("RelatedPostId", FloatType(), True),
+        StructField("PostLinkTypeId", FloatType(), True)])
+    MAIN_TAG = 'postlinks'
+    return parse(sparkContext, path, SCHEMA, MAIN_TAG)
 
 def parse_users(sparkContext, path):
     SCHEMA = StructType([ \
@@ -66,3 +92,13 @@ def parse_users(sparkContext, path):
     MAIN_TAG = 'users'
     return parse(sparkContext, path, SCHEMA, MAIN_TAG)
 
+def parse_votes(sparkContext, path):
+    SCHEMA = StructType([ \
+        StructField("Id", FloatType(), True), \
+        StructField("PostId", FloatType(), True), \
+        StructField("VoteTypeId", FloatType(), True), \
+        StructField("CreationDate", StringType(), True), \
+        StructField("UserId", FloatType(), True), \
+        StructField("BountyAmount", FloatType(), True)])
+    MAIN_TAG = 'votes'
+    return parse(sparkContext, path, SCHEMA, MAIN_TAG)
