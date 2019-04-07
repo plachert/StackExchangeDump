@@ -1,4 +1,4 @@
-from pyspark.sql.types import StructType, StructField, StringType, FloatType
+from pyspark.sql.types import StructType, StructField, StringType, FloatType, IntegerType
 from parser_utils import parse
 
 def parse_badges(sparkContext, path):
@@ -16,7 +16,7 @@ def parse_comments(sparkContext, path):
         StructField("Score", FloatType(), True), \
         StructField("Text", StringType(), True), \
         StructField("CreationDate", StringType(), True), \
-        StructField("UserID", FloatType(), True)])
+        StructField("UserId", StringType(), True)])
     MAIN_TAG = 'comments'
     return parse(sparkContext, path, SCHEMA, MAIN_TAG)
 
