@@ -102,3 +102,13 @@ def parse_votes(sparkContext, path):
         StructField("BountyAmount", FloatType(), True)])
     MAIN_TAG = 'votes'
     return parse(sparkContext, path, SCHEMA, MAIN_TAG)
+
+def parse_tags(sparkContext, path):
+    SCHEMA = StructType([ \
+        StructField("Id", FloatType(), True), \
+        StructField("TagName", StringType(), True), \
+        StructField("Count", FloatType(), True), \
+        StructField("ExcerptPostId", FloatType(), True), \
+        StructField("WikiPostId", FloatType(), True)])
+    MAIN_TAG = 'tags'
+    return parse(sparkContext, path, SCHEMA, MAIN_TAG)
