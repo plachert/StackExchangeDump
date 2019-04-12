@@ -25,7 +25,7 @@ def parse_posts(sparkContext, path):
     SCHEMA = StructType([ \
         StructField("Id", FloatType(), True), \
         StructField("PostTypeId", FloatType(), True), \
-        StructField("ParentID", FloatType(), True), \
+        StructField("ParentId", FloatType(), True), \
         StructField("AcceptedAnswerId", FloatType(), True), \
         StructField("CreationDate", StringType(), True), \
         StructField("Score", FloatType(), True), \
